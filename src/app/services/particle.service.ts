@@ -26,7 +26,8 @@ export class ParticleData {
 @Injectable()
 export class ParticleService {
     accessToken:string = localStorage.getItem('AccessToken');
-    device:string = localStorage.getItem('Device');
+   // hard coded to the ferment device on the particle site.  
+    device:string = "Ferment";
   
 constructor(private http: HttpClient) { 
     }
@@ -92,6 +93,7 @@ GetVariable(varname:string): Observable<any>  {
 //Returns the entire JSON response.  
 CallFunction(funcname:string, arg:string): Observable<any>  {
     let deviceId = this.device;
+    console.log('divice id in particle funcution call', deviceId);
     let accessToken = this.accessToken;
     let headers = new HttpHeaders()
         .set('Authorization', 'Bearer '+accessToken)

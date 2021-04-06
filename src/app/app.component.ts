@@ -27,6 +27,7 @@ openDialog() {
     if (localStorage.getItem('tempFormat') == null){
       localStorage.setItem('tempFormat','F');
     }
+   
     this.particleService.CheckLogin()
       .subscribe(res => {let islog = res;
         console.log('init login check',islog);

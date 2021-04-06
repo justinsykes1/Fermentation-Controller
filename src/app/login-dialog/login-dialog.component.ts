@@ -28,6 +28,8 @@ export class LoginDialogComponent implements OnInit{
             .subscribe(
             res =>{
                 console.log("particle login success: ",res);
+                //this.selectedDevice = localStorage.getItem('Device');
+                this.dialogRef.close();
             },
             err => {
                 console.log('login failed',err);
@@ -36,21 +38,24 @@ export class LoginDialogComponent implements OnInit{
             );
             
     }
+    
    ngOnInit() {
-       let deviceCheck = localStorage.getItem('Device');
+      /* let deviceCheck = localStorage.getItem('Device');
        if (deviceCheck === null){
          this.selectedDevice = "Click to Select Device";
        }
         else
         this.selectedDevice = localStorage.getItem('Device');
+       */ 
             
     }
-
+/*
     onChange(value) { 
         console.log('devisce change');
         this.particleService.NewDevice(value);
         this.dialogRef.close();
     }
     
+ */   
   }
  
