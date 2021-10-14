@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector,Input } from '@angular/core';
 import { MatDialog } from "@angular/material";
 import {DataSource} from '@angular/cdk/collections';
-import {Observable, BehaviorSubject} from 'rxjs';
+import {Observable, pipe} from 'rxjs';
 ////import 'rxjs/add/observable/of';
 //import 'rxjs/add/operator/startWith';
 //import 'rxjs/add/observable/merge';
@@ -14,6 +14,7 @@ import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.compone
 
 //model
 import {Row} from "../models/row";
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-beer-profile',
@@ -34,12 +35,21 @@ export class BeerProfileComponent implements OnInit  {
  
 
 ngOnInit() {
-  this.fb.profileList.subscribe(res => this.profilelist = res);
-  this.item.first().subscribe(res => {
+    this.fb.profileList.subscribe(res => {this.profilelist = res;
+     // console.log('profile state in init',res);
+     });
+    
+  
+  this.item.pipe(first()).subscribe(res => {
     this.currentProfile = res.profileName;
+    console.log('item in init',res);
   });
+ 
   this.item.subscribe(res =>{
-    if (res.mode == '3') this.profileRunning = true;
+   // console.log('profile state in init',res.mode);
+    if (res.mode == '3') {
+      this.profileRunning = true;
+    }
     else this.profileRunning = false;
   });
 }
@@ -67,7 +77,8 @@ startProfile(){
       console.log('function profilesetup response',res);
       this.particleService.CallFunction('setMode','3')
         .subscribe(res => {
-          console.log('function call response',res)});
+          console.log('setMode function call response',res);
+        });
     });
   })
 }

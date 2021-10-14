@@ -27,15 +27,15 @@ export class ParticleData {
 export class ParticleService {
     accessToken:string = localStorage.getItem('AccessToken');
    // hard coded to the ferment device on the particle site.  
-    device:string = "Ferment";
+    device:string = "380039000647343339373536";
   
 constructor(private http: HttpClient) { 
     }
 
 
 URL = 'https://api.particle.io/oauth/token';
-URLDevice = 'https://api.particle.io/v1/devices/';
-URLSubscribe = 'https://api.particle.io/v1/devices/';
+URLDevice = 'https://api.particle.io/v1/products/7872/devices/';
+// URLSubscribe = 'https://api.particle.io/v1/devices/';
 
 
 CheckLogin():Observable<boolean>{

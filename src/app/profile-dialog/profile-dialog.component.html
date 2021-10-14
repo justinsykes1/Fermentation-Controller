@@ -1,11 +1,11 @@
 <div fxLayout="column">
-  <h2 mat-dialog-title fxFlex fxFlexAlign="center">Change Target Temperature</h2>
+  <h2 mat-dialog-title fxFlex fxFlexAlign="center">Edit Row</h2>
   
   <mat-dialog-content fxLayout = "column"> 
-        <mat-form-field>
+        <mat-form-field>Day 
           <input matInput type="number" [(ngModel)]="row.day" >
         </mat-form-field>
-    <mat-form-field>
+    <mat-form-field>Temperature
         <input matInput type="number" [(ngModel)]="row.temperature" >
     </mat-form-field>
   </mat-dialog-content>
